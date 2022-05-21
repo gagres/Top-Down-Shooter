@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 _life = 3;
-_speed = 3;
+_speed = 5;
 _delay_fire = room_speed * .2;
 _last_fire_timer = 0;
 _is_invunerable = false;

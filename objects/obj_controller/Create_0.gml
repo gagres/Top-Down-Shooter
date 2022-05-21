@@ -19,7 +19,12 @@ spawn_enemies = function () {
 		var dist = point_distance(enemy.x, enemy.y, obj_player.x, obj_player.y);
 		if (dist < 200) {
 			instance_destroy(enemy, false);
-			continue;
 		}
-	} until (instance_number(obj_enemy_model) < _qtd);
+	} until (instance_number(obj_enemy_model) > _qtd);
+}
+
+check_enemies = function () {
+	if (instance_number(obj_enemy_large) == 0) {
+		room_restart();
+	}
 }
