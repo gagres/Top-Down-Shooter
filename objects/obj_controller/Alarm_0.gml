@@ -1,4 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (instance_exists(obj_controller)) obj_controller.schedule_restart_room();
+_scheduled_restart = false;
+room_restart()

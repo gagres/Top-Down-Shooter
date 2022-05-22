@@ -18,6 +18,7 @@
     {"id":{"name":"obj_screenshake","path":"objects/obj_screenshake/obj_screenshake.yy",},"order":4,},
     {"id":{"name":"spr_bullet_destroy_anim","path":"sprites/spr_bullet_destroy_anim/spr_bullet_destroy_anim.yy",},"order":4,},
     {"id":{"name":"spr_player_shooting","path":"sprites/spr_player_shooting/spr_player_shooting.yy",},"order":3,},
+    {"id":{"name":"spr_background_2","path":"sprites/spr_background_2/spr_background_2.yy",},"order":1,},
     {"id":{"name":"obj_enemy_large","path":"objects/obj_enemy_large/obj_enemy_large.yy",},"order":3,},
     {"id":{"name":"spr_enemy_large","path":"sprites/spr_enemy_large/spr_enemy_large.yy",},"order":3,},
     {"id":{"name":"spr_enemy_small","path":"sprites/spr_enemy_small/spr_enemy_small.yy",},"order":0,},

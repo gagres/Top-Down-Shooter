@@ -1,7 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+_level = 1;
+_timer_restart_room = room_speed * 5;
+_scheduled_restart = false;
+
 start = function () {
+	resize_room();
+	change_background();
 	var random_x = irandom_range(0 + 100, room_width - 100);
 	var random_y = irandom_range(0 + 100, room_height - 100);
 	instance_create_layer(random_x, random_y, "Player", obj_player);
@@ -9,9 +15,21 @@ start = function () {
 	spawn_enemies();
 }
 
+resize_room = function () {
+	room_width = irandom_range(1920, 3000);
+	room_height = irandom_range(1080, 2500);
+}
+
+change_background = function () {
+	var lay_id = layer_get_id("Background");
+	var back_id = layer_background_get_id(lay_id);
+	var background = choose(spr_background_1, spr_background_2);
+	layer_background_sprite(back_id, background);
+}
+
 spawn_enemies = function () {
 	if (!instance_exists(obj_player)) return;
-	var _qtd = irandom_range(3, 7);
+	var _qtd = irandom_range(3, 7) * _level;
 	do {
 		var random_x = irandom_range(0 + 100, room_width - 100);
 		var random_y = irandom_range(0 + 100, room_height - 100);
@@ -25,6 +43,14 @@ spawn_enemies = function () {
 
 check_enemies = function () {
 	if (instance_number(obj_enemy_large) == 0) {
-		room_restart();
+		schedule_restart_room();
 	}
+}
+
+schedule_restart_room = function ()
+{
+	if (_scheduled_restart) return;
+	_level++;
+	_scheduled_restart = true;
+	alarm[0] = _timer_restart_room;
 }
