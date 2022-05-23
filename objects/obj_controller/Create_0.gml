@@ -6,11 +6,10 @@ _timer_restart_room = room_speed * 5;
 _scheduled_restart = false;
 
 start = function () {
+	randomize();
 	resize_room();
 	change_background();
-	var random_x = irandom_range(0 + 100, room_width - 100);
-	var random_y = irandom_range(0 + 100, room_height - 100);
-	instance_create_layer(random_x, random_y, "Player", obj_player);
+	create_player();
 	instance_create_layer(0, 0, layer, obj_screenshake);
 	spawn_enemies();
 }
@@ -27,9 +26,17 @@ change_background = function () {
 	layer_background_sprite(back_id, background);
 }
 
+create_player = function () {
+	var random_x = irandom_range(0 + 100, room_width - 100);
+	var random_y = irandom_range(0 + 100, room_height - 100);
+	instance_create_layer(random_x, random_y, "Player", obj_player);
+}
+
 spawn_enemies = function () {
 	if (!instance_exists(obj_player)) return;
 	var _qtd = irandom_range(3, 7) * _level;
+	//// remove
+	//_qtd = 1;
 	do {
 		var random_x = irandom_range(0 + 100, room_width - 100);
 		var random_y = irandom_range(0 + 100, room_height - 100);
@@ -38,7 +45,7 @@ spawn_enemies = function () {
 		if (dist < 200) {
 			instance_destroy(enemy, false);
 		}
-	} until (instance_number(obj_enemy_model) > _qtd);
+	} until (instance_number(obj_enemy_model) >= _qtd);
 }
 
 check_enemies = function () {
@@ -50,7 +57,6 @@ check_enemies = function () {
 schedule_restart_room = function ()
 {
 	if (_scheduled_restart) return;
-	_level++;
 	_scheduled_restart = true;
 	alarm[0] = _timer_restart_room;
 }

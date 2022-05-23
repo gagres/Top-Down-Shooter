@@ -12,6 +12,7 @@ _shake = 20;
 _min_slices = 15;
 _max_slices = 30;
 _damage = 2;
+_slices_do_damage = true;
 
 _lay_egg_interval = room_speed * 2;
 _lay_egg_timer = _lay_egg_interval;

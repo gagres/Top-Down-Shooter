@@ -2,6 +2,7 @@
 // You can write your code in this editor
 
 move();
+keep_inside_room();
 look_at_mouse();
 fire();
 check_hit_by_enemy();

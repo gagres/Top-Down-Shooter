@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-_life = 3;
+_lifes = 3;
 _speed = 5;
 _delay_fire = room_speed * .2;
 _last_fire_timer = 0;
@@ -36,6 +36,13 @@ walk = function () {
 	image_speed = 1;
 }
 
+keep_inside_room = function () {
+	var player_width = sprite_width / 2;
+	var player_height = sprite_height / 2;
+	x = clamp(x, 0 + player_width * 2, room_width - player_width * 2);
+	y = clamp(y, 0 + player_height * 2, room_height - player_height * 2);
+}
+
 look_at_mouse = function () {
 	var dir = point_direction(x + 15, y - 5, mouse_x, mouse_y);
 	image_angle = dir;
@@ -55,8 +62,8 @@ fire = function () {
 }
 
 take_damage = function () {
-	_life--;
-	if (_life <= 0) {
+	_lifes--;
+	if (_lifes <= 0) {
 		instance_destroy();
 	}
 }

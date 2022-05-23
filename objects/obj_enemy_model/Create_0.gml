@@ -10,6 +10,7 @@ _max_speed = 3;
 _min_slices = 1;
 _max_slices = 5;
 _damage = 1;
+_slices_do_damage = false;
 
 change_move = function () {
 	speed = random(_max_speed);
@@ -50,6 +51,7 @@ explode = function () {
 		_enemy.speed = irandom_range(6, 10);
 		_enemy.direction = irandom(359);
 		_enemy.image_angle = _enemy.direction;
+		_enemy._damage_allowed = _slices_do_damage;
 	}
 	instance_create_layer(x, y, layer, obj_enemy_trace);
 	if (obj_screenshake) obj_screenshake.shake(_shake);
